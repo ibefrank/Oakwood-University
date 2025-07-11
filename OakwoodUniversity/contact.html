@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Oakwood University</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span>Oakwood University</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li class="dropdown">
+                    <a href="academics.html" class="nav-link">Academics <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="academics.html#engineering">Engineering</a></li>
+                        <li><a href="academics.html#business">Business</a></li>
+                        <li><a href="academics.html#arts">Liberal Arts</a></li>
+                        <li><a href="academics.html#sciences">Sciences</a></li>
+                    </ul>
+                </li>
+                <li><a href="admissions.html" class="nav-link">Admissions</a></li>
+                <li><a href="news.html" class="nav-link">News</a></li>
+                <li><a href="contact.html" class="nav-link active">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Contact Us</h1>
+            <p>Get in touch with us - we're here to help</p>
+        </div>
+    </section>
+
+    <!-- Contact Information -->
+    <section class="contact-info">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Campus Address</h3>
+                    <p>123 University Avenue<br>Education City, EC 12345<br>United States</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone Numbers</h3>
+                    <p>Main Office: (555) 123-4567<br>Admissions: (555) 123-4568<br>Student Services: (555) 123-4569</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Addresses</h3>
+                    <p>General: info@oakwood.edu<br>Admissions: admissions@oakwood.edu<br>Support: support@oakwood.edu</p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-clock"></i>
+                    <h3>Office Hours</h3>
+                    <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section class="contact-form-section">
+        <div class="container">
+            <div class="form-container">
+                <h2>Send us a Message</h2>
+                <p>Have a question or need more information? Fill out the form below and we'll get back to you soon.</p>
+                
+                <form id="contactForm" action="php/contact-handler.php" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                        <span class="error-message" id="phoneError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <select id="subject" name="subject" required>
+                            <option value="">Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="admissions">Admissions</option>
+                            <option value="academics">Academic Programs</option>
+                            <option value="financial">Financial Aid</option>
+                            <option value="student-services">Student Services</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <span class="error-message" id="subjectError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" rows="5" required placeholder="Please provide details about your inquiry..."></textarea>
+                        <span class="error-message" id="messageError"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+                            <span class="checkmark"></span>
+                            Subscribe to our newsletter for updates and announcements
+                        </label>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+                
+                <div id="formMessage" class="form-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Department Contacts -->
+    <section class="department-contacts">
+        <div class="container">
+            <h2>Department Contacts</h2>
+            <div class="departments-grid">
+                <div class="department-contact">
+                    <h3>Admissions Office</h3>
+                    <p><i class="fas fa-user"></i> Sarah Johnson, Director</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4568</p>
+                    <p><i class="fas fa-envelope"></i> admissions@oakwood.edu</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</p>
+                </div>
+                
+                <div class="department-contact">
+                    <h3>Student Services</h3>
+                    <p><i class="fas fa-user"></i> Michael Davis, Dean</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4569</p>
+                    <p><i class="fas fa-envelope"></i> studentservices@oakwood.edu</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 9:00 AM - 6:00 PM</p>
+                </div>
+                
+                <div class="department-contact">
+                    <h3>Financial Aid</h3>
+                    <p><i class="fas fa-user"></i> Lisa Chen, Coordinator</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4570</p>
+                    <p><i class="fas fa-envelope"></i> financialaid@oakwood.edu</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8:30 AM - 4:30 PM</p>
+                </div>
+                
+                <div class="department-contact">
+                    <h3>Academic Affairs</h3>
+                    <p><i class="fas fa-user"></i> Dr. Robert Wilson, Vice President</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4571</p>
+                    <p><i class="fas fa-envelope"></i> academics@oakwood.edu</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 8:00 AM - 5:00 PM</p>
+                </div>
+                
+                <div class="department-contact">
+                    <h3>IT Support</h3>
+                    <p><i class="fas fa-user"></i> Tech Support Team</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4572</p>
+                    <p><i class="fas fa-envelope"></i> support@oakwood.edu</p>
+                    <p><i class="fas fa-clock"></i> Mon-Fri: 7:00 AM - 10:00 PM</p>
+                </div>
+                
+                <div class="department-contact">
+                    <h3>Campus Security</h3>
+                    <p><i class="fas fa-user"></i> Security Office</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4573</p>
+                    <p><i class="fas fa-envelope"></i> security@oakwood.edu</p>
+                    <p><i class="fas fa-clock"></i> 24/7 Emergency Service</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Campus Map -->
+    <section class="campus-map">
+        <div class="container">
+            <h2>Campus Location</h2>
+            <div class="map-container">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <p>Interactive campus map will be displayed here</p>
+                </div>
+                <div class="map-info">
+                    <h3>Getting to Campus</h3>
+                    <h4>By Car:</h4>
+                    <p>Take Highway 101 to Exit 25, then follow University Avenue for 2 miles. Campus parking is available in designated lots.</p>
+                    
+                    <h4>By Public Transit:</h4>
+                    <p>Take Metro Bus Route 42 or 55 to University Station. The campus is a 5-minute walk from the station.</p>
+                    
+                    <h4>By Air:</h4>
+                    <p>Fly into Education City International Airport (ECI), then take a taxi or shuttle service to campus (approximately 20 minutes).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Oakwood University</h3>
+                    <p>Leading the way in higher education since 1970</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="academics.html#engineering">Engineering</a></li>
+                        <li><a href="academics.html#business">Business</a></li>
+                        <li><a href="academics.html#arts">Liberal Arts</a></li>
+                        <li><a href="academics.html#sciences">Sciences</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 University Ave, Education City</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@oakwood.edu</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Oakwood University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

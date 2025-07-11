@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News & Announcements - Oakwood University</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+             
+                <span>Oakwood University</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li class="dropdown">
+                    <a href="academics.html" class="nav-link">Academics <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="academics.html#engineering">Engineering</a></li>
+                        <li><a href="academics.html#business">Business</a></li>
+                        <li><a href="academics.html#arts">Liberal Arts</a></li>
+                        <li><a href="academics.html#sciences">Sciences</a></li>
+                    </ul>
+                </li>
+                <li><a href="admissions.html" class="nav-link">Admissions</a></li>
+                <li><a href="news.html" class="nav-link active">News</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>News & Announcements</h1>
+            <p>Stay updated with the latest news and events at Oakwood University</p>
+        </div>
+    </section>
+
+    <!-- News Filter -->
+    <section class="news-filter">
+        <div class="container">
+            <div class="filter-controls">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">All News</button>
+                    <button class="filter-btn" data-category="academic">Academic</button>
+                    <button class="filter-btn" data-category="research">Research</button>
+                    <button class="filter-btn" data-category="student">Student Life</button>
+                    <button class="filter-btn" data-category="announcement">Announcements</button>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="newsSearch" placeholder="Search news...">
+                    <i class="fas fa-search"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured News -->
+    <section class="featured-news">
+        <div class="container">
+            <h2>Featured News</h2>
+            <div class="featured-grid" id="featuredNews">
+                <!-- Featured news items will be loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- All News -->
+    <section class="all-news">
+        <div class="container">
+            <h2>All News</h2>
+            <div class="news-list" id="newsList">
+                <!-- News items will be loaded here -->
+            </div>
+            <div class="pagination" id="pagination">
+                <!-- Pagination controls will be added here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter-signup">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Informed</h2>
+                <p>Subscribe to our newsletter to receive the latest news and updates directly in your inbox.</p>
+                <form id="newsletterForm" class="newsletter-form">
+                    <input type="email" id="newsletterEmail" placeholder="Enter your email address" required>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+                <div id="newsletterMessage" class="newsletter-message"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Oakwood University</h3>
+                    <p>Leading the way in higher education since 1970</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="academics.html#engineering">Engineering</a></li>
+                        <li><a href="academics.html#business">Business</a></li>
+                        <li><a href="academics.html#arts">Liberal Arts</a></li>
+                        <li><a href="academics.html#sciences">Sciences</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 University Ave, Education City</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@oakwood.edu</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Oakwood University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
