@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Database Administration - Oakwood University</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 120px auto 40px;
+            padding: 20px;
+        }
+        
+        .admin-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .admin-header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .admin-header p {
+            color: #7f8c8d;
+            font-size: 1.1rem;
+        }
+        
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .admin-tab {
+            padding: 15px 25px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #7f8c8d;
+            transition: all 0.3s ease;
+        }
+        
+        .admin-tab.active {
+            color: #3498db;
+            border-bottom: 2px solid #3498db;
+        }
+        
+        .admin-tab:hover {
+            color: #3498db;
+        }
+        
+        .admin-content {
+            display: none;
+        }
+        
+        .admin-content.active {
+            display: block;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        
+        .stat-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .data-table {
+            background: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .data-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .data-table th {
+            background: #f8f9fa;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #2c3e50;
+            border-bottom: 1px solid #dee2e6;
+        }
+        
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #dee2e6;
+            color: #495057;
+        }
+        
+        .data-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .status-badge {
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .status-new {
+            background: #e3f2fd;
+            color: #1565c0;
+        }
+        
+        .status-active {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+        }
+        
+        .error {
+            text-align: center;
+            padding: 40px;
+            color: #e74c3c;
+        }
+        
+        .refresh-btn {
+            background: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+        
+        .refresh-btn:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.svg" alt="Oakwood University Logo">
+                <span>Oakwood University</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li><a href="academics.html" class="nav-link">Academics</a></li>
+                <li><a href="admissions.html" class="nav-link">Admissions</a></li>
+                <li><a href="news.html" class="nav-link">News</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+                <li><a href="admin.html" class="nav-link active">Admin</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Admin Content -->
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Database Administration</h1>
+            <p>PostgreSQL Database Integration for Oakwood University Website</p>
+        </div>
+
+        <div class="admin-tabs">
+            <button class="admin-tab active" onclick="showTab('stats')">
+                <i class="fas fa-chart-bar"></i> Statistics
+            </button>
+            <button class="admin-tab" onclick="showTab('news')">
+                <i class="fas fa-newspaper"></i> News
+            </button>
+            <button class="admin-tab" onclick="showTab('contacts')">
+                <i class="fas fa-envelope"></i> Contacts
+            </button>
+            <button class="admin-tab" onclick="showTab('newsletter')">
+                <i class="fas fa-users"></i> Newsletter
+            </button>
+            <button class="admin-tab" onclick="showTab('programs')">
+                <i class="fas fa-graduation-cap"></i> Programs
+            </button>
+        </div>
+
+        <!-- Statistics Tab -->
+        <div id="stats" class="admin-content active">
+            <button class="refresh-btn" onclick="loadStats()">
+                <i class="fas fa-sync"></i> Refresh Stats
+            </button>
+            <div class="stats-grid" id="statsGrid">
+                <div class="loading">Loading statistics...</div>
+            </div>
+        </div>
+
+        <!-- News Tab -->
+        <div id="news" class="admin-content">
+            <button class="refresh-btn" onclick="loadNews()">
+                <i class="fas fa-sync"></i> Refresh News
+            </button>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Category</th>
+                            <th>Author</th>
+                            <th>Date</th>
+                            <th>Featured</th>
+                        </tr>
+                    </thead>
+                    <tbody id="newsTable">
+                        <tr><td colspan="5" class="loading">Loading news...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Contacts Tab -->
+        <div id="contacts" class="admin-content">
+            <button class="refresh-btn" onclick="loadContacts()">
+                <i class="fas fa-sync"></i> Refresh Contacts
+            </button>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Subject</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Newsletter</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contactsTable">
+                        <tr><td colspan="6" class="loading">Loading contacts...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Newsletter Tab -->
+        <div id="newsletter" class="admin-content">
+            <button class="refresh-btn" onclick="loadNewsletter()">
+                <i class="fas fa-sync"></i> Refresh Subscribers
+            </button>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Email</th>
+                            <th>Name</th>
+                            <th>Subscription Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="newsletterTable">
+                        <tr><td colspan="4" class="loading">Loading newsletter subscribers...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Programs Tab -->
+        <div id="programs" class="admin-content">
+            <button class="refresh-btn" onclick="loadPrograms()">
+                <i class="fas fa-sync"></i> Refresh Programs
+            </button>
+            <div class="data-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Program Name</th>
+                            <th>Degree Type</th>
+                            <th>Department</th>
+                            <th>Duration</th>
+                            <th>Credits</th>
+                            <th>Type</th>
+                        </tr>
+                    </thead>
+                    <tbody id="programsTable">
+                        <tr><td colspan="6" class="loading">Loading programs...</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script>
+        // Tab switching functionality
+        function showTab(tabName) {
+            // Hide all content
+            const contents = document.querySelectorAll('.admin-content');
+            contents.forEach(content => content.classList.remove('active'));
+            
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.admin-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Show selected content and activate tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            
+            // Load data based on tab
+            switch(tabName) {
+                case 'stats':
+                    loadStats();
+                    break;
+                case 'news':
+                    loadNews();
+                    break;
+                case 'contacts':
+                    loadContacts();
+                    break;
+                case 'newsletter':
+                    loadNewsletter();
+                    break;
+                case 'programs':
+                    loadPrograms();
+                    break;
+            }
+        }
+
+        // Load statistics
+        async function loadStats() {
+            try {
+                const response = await fetch('php/admin-handler.php?action=get_stats');
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayStats(data.stats);
+                } else {
+                    document.getElementById('statsGrid').innerHTML = '<div class="error">Error loading statistics</div>';
+                }
+            } catch (error) {
+                document.getElementById('statsGrid').innerHTML = '<div class="error">Error loading statistics</div>';
+            }
+        }
+
+        // Display statistics
+        function displayStats(stats) {
+            const statsGrid = document.getElementById('statsGrid');
+            statsGrid.innerHTML = `
+                <div class="stat-card">
+                    <h3>News Articles</h3>
+                    <div class="stat-number">${stats.news || 0}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Contact Submissions</h3>
+                    <div class="stat-number">${stats.contact_submissions || 0}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Newsletter Subscribers</h3>
+                    <div class="stat-number">${stats.newsletter_subscribers || 0}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Academic Programs</h3>
+                    <div class="stat-number">${stats.academic_programs || 0}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Faculty Members</h3>
+                    <div class="stat-number">${stats.faculty || 0}</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Events</h3>
+                    <div class="stat-number">${stats.events || 0}</div>
+                </div>
+            `;
+        }
+
+        // Load news data
+        async function loadNews() {
+            try {
+                const response = await fetch('php/news-handler.php?action=get_news&limit=50');
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayNews(data.news);
+                } else {
+                    document.getElementById('newsTable').innerHTML = '<tr><td colspan="5" class="error">Error loading news</td></tr>';
+                }
+            } catch (error) {
+                document.getElementById('newsTable').innerHTML = '<tr><td colspan="5" class="error">Error loading news</td></tr>';
+            }
+        }
+
+        // Display news data
+        function displayNews(news) {
+            const newsTable = document.getElementById('newsTable');
+            if (news.length === 0) {
+                newsTable.innerHTML = '<tr><td colspan="5" class="loading">No news articles found</td></tr>';
+                return;
+            }
+            
+            newsTable.innerHTML = news.map(article => `
+                <tr>
+                    <td>${article.title}</td>
+                    <td>${article.category}</td>
+                    <td>${article.author || 'Unknown'}</td>
+                    <td>${new Date(article.date).toLocaleDateString()}</td>
+                    <td>${article.featured ? '<span class="status-badge status-active">Featured</span>' : ''}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Load contacts data
+        async function loadContacts() {
+            try {
+                const response = await fetch('php/admin-handler.php?action=get_contacts');
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayContacts(data.contacts);
+                } else {
+                    document.getElementById('contactsTable').innerHTML = '<tr><td colspan="6" class="error">Error loading contacts</td></tr>';
+                }
+            } catch (error) {
+                document.getElementById('contactsTable').innerHTML = '<tr><td colspan="6" class="error">Error loading contacts</td></tr>';
+            }
+        }
+
+        // Display contacts data
+        function displayContacts(contacts) {
+            const contactsTable = document.getElementById('contactsTable');
+            if (contacts.length === 0) {
+                contactsTable.innerHTML = '<tr><td colspan="6" class="loading">No contact submissions found</td></tr>';
+                return;
+            }
+            
+            contactsTable.innerHTML = contacts.map(contact => `
+                <tr>
+                    <td>${contact.name}</td>
+                    <td>${contact.email}</td>
+                    <td>${contact.subject}</td>
+                    <td>${new Date(contact.created_at).toLocaleDateString()}</td>
+                    <td><span class="status-badge status-${contact.status}">${contact.status}</span></td>
+                    <td>${contact.newsletter_subscription ? 'Yes' : 'No'}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Load newsletter data
+        async function loadNewsletter() {
+            try {
+                const response = await fetch('php/admin-handler.php?action=get_newsletter');
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayNewsletter(data.subscribers);
+                } else {
+                    document.getElementById('newsletterTable').innerHTML = '<tr><td colspan="4" class="error">Error loading newsletter subscribers</td></tr>';
+                }
+            } catch (error) {
+                document.getElementById('newsletterTable').innerHTML = '<tr><td colspan="4" class="error">Error loading newsletter subscribers</td></tr>';
+            }
+        }
+
+        // Display newsletter data
+        function displayNewsletter(subscribers) {
+            const newsletterTable = document.getElementById('newsletterTable');
+            if (subscribers.length === 0) {
+                newsletterTable.innerHTML = '<tr><td colspan="4" class="loading">No newsletter subscribers found</td></tr>';
+                return;
+            }
+            
+            newsletterTable.innerHTML = subscribers.map(subscriber => `
+                <tr>
+                    <td>${subscriber.email}</td>
+                    <td>${subscriber.name || 'Not provided'}</td>
+                    <td>${new Date(subscriber.subscription_date).toLocaleDateString()}</td>
+                    <td><span class="status-badge status-${subscriber.active ? 'active' : 'inactive'}">${subscriber.active ? 'Active' : 'Inactive'}</span></td>
+                </tr>
+            `).join('');
+        }
+
+        // Load programs data
+        async function loadPrograms() {
+            try {
+                const response = await fetch('php/admin-handler.php?action=get_programs');
+                const data = await response.json();
+                
+                if (data.success) {
+                    displayPrograms(data.programs);
+                } else {
+                    document.getElementById('programsTable').innerHTML = '<tr><td colspan="6" class="error">Error loading programs</td></tr>';
+                }
+            } catch (error) {
+                document.getElementById('programsTable').innerHTML = '<tr><td colspan="6" class="error">Error loading programs</td></tr>';
+            }
+        }
+
+        // Display programs data
+        function displayPrograms(programs) {
+            const programsTable = document.getElementById('programsTable');
+            if (programs.length === 0) {
+                programsTable.innerHTML = '<tr><td colspan="6" class="loading">No programs found</td></tr>';
+                return;
+            }
+            
+            programsTable.innerHTML = programs.map(program => `
+                <tr>
+                    <td>${program.name}</td>
+                    <td>${program.degree_type}</td>
+                    <td>${program.department}</td>
+                    <td>${program.duration_years} years</td>
+                    <td>${program.credits_required}</td>
+                    <td>${program.program_type}</td>
+                </tr>
+            `).join('');
+        }
+
+        // Load initial data
+        document.addEventListener('DOMContentLoaded', function() {
+            loadStats();
+        });
+    </script>
+</body>
+</html>

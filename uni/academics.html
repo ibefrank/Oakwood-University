@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics - Oakwood University</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/logo.svg" alt="Oakwood University Logo">
+                <span>Oakwood University</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="about.html" class="nav-link">About</a></li>
+                <li class="dropdown">
+                    <a href="academics.html" class="nav-link active">Academics <i class="fas fa-chevron-down"></i></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#engineering">Engineering</a></li>
+                        <li><a href="#business">Business</a></li>
+                        <li><a href="#arts">Liberal Arts</a></li>
+                        <li><a href="#sciences">Sciences</a></li>
+                    </ul>
+                </li>
+                <li><a href="admissions.html" class="nav-link">Admissions</a></li>
+                <li><a href="news.html" class="nav-link">News</a></li>
+                <li><a href="contact.html" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1>Academic Programs</h1>
+            <p>Explore our diverse range of undergraduate and graduate programs</p>
+        </div>
+    </section>
+
+    <!-- Program Filter -->
+    <section class="program-filter">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Programs</button>
+                <button class="filter-btn" data-filter="undergraduate">Undergraduate</button>
+                <button class="filter-btn" data-filter="graduate">Graduate</button>
+                <button class="filter-btn" data-filter="online">Online</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Engineering Department -->
+    <section class="department" id="engineering">
+        <div class="container">
+            <div class="department-header">
+                <h2><i class="fas fa-cogs"></i> School of Engineering</h2>
+                <p>Building tomorrow's innovators and problem solvers</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card" data-category="undergraduate">
+                    <h3>Computer Science</h3>
+                    <p class="program-type">Bachelor of Science</p>
+                    <p>Learn programming, algorithms, and software development to create innovative solutions for real-world problems.</p>
+                    <ul class="program-highlights">
+                        <li>Software Development</li>
+                        <li>Machine Learning</li>
+                        <li>Cybersecurity</li>
+                        <li>Data Science</li>
+                    </ul>
+                    <div class="program-duration">
+                        <i class="fas fa-clock"></i> 4 years
+                    </div>
+                </div>
+                <div class="program-card" data-category="undergraduate">
+                    <h3>Electrical Engineering</h3>
+                    <p class="program-type">Bachelor of Science</p>
+                    <p>Design and develop electrical systems, from microchips to power grids, shaping the future of technology.</p>
+                    <ul class="program-highlights">
+                        <li>Circuit Design</li>
+                        <li>Power Systems</li>
+                        <li>Electronics</li>
+                        <li>Signal Processing</li>
+                    </ul>
+                    <div class="program-duration">
+                        <i class="fas fa-clock"></i> 4 years
+                    </div>
+                </div>
+                <div class="program-card" data-category="graduate">
+                    <h3>Software Engineering</h3>
+                    <p class="program-type">Master of Science</p>
+                    <p>Advanced software development methodologies and project management for complex systems.</p>
+                    <ul class="program-highlights">
+                        <li>Software Architecture</li>
+                        <li>Project Management</li>
+                        <li>Quality Assurance</li>
+                        <li>DevOps</li>
+                    </ul>
+                    <div class="program-duration">
+                        <i class="fas fa-clock"></i> 2 years
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Department -->
+    <section class="department" id="business">
+        <div class="container">
+            <div class="department-header">
+                <h2><i class="fas fa-briefcase"></i> School of Business</h2>
+                <p>Developing future business leaders and entrepreneurs</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card" data-category="undergraduate">
+                    <h3>Business Administration</h3>
+                    <p class="program-type">Bachelor of Business Administration</p>
+                    <p>Comprehensive business education covering management, marketing, finance, and operations.</p>
+                    <ul class="program-highlights">
+                        <li>Management</li>
+                        <li>Marketing</li>
+                        <li>Finance</li>
+                        <li>Operations</li>
+                    </ul>
+                    <div class="program-duration">
+                        <i class="fas fa-clock"></i> 4 years
+                    </div>
+                </div>
+                <div class="program-card" data-category="graduate online">
+                    <h3>Master of Business Administration</h3>
+                    <p class="program-type">MBA</p>
+                    <p>Advanced business leadership program with specializations in various business areas.</p>
+                    <ul class="program-highlights">
+                        <li>Strategic Management</li>
+                        <li>Leadership</li>
+                        <li>International Business</li>
+                        <li>Entrepreneurship</li>
+                    </ul>
+                    <div class="program-duration">
+                        <i class="fas fa-clock"></i> 2 years
+                    </div>
+                </div>
+                <div class="program-card" data-category="undergraduate">
+                    <h3>Accounting</h3>
+                    <p class="program-type">Bachelor of Science</p>
+                    <p>Prepare for a career in accounting, auditing, and financial management.</p>
+                    <ul class="program-highlights">
+                        <li>Financial Accounting</li>
+                        <li>Auditing</li>
+                        <li>Tax Preparation</li>
+                        <li>Cost Accounting</li>
+                    </ul>
+                    <div class="program-duration">
+                        <i class="fas fa-clock"></i> 4 years
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Liberal Arts Department -->
+    <section class="department" id="arts">
+        <div class="container">
+            <div class="department-header">
+                <h2><i class="fas fa-palette"></i> School of Liberal Arts</h2>
+                <p>Fostering creativity, critical thinking, and cultural understanding</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card" data-category="undergraduate">
+                    <h3>English Literature</h3>
+                    <p class="program-type">Bachelor of Arts</p>
+                    <p>Explore the rich tradition of English literature while developing strong writing and analytical skills.</p>
+                    <ul class="program-highlights">
+                        <li>Literary Analysis</li>
+                        <li>Creative Writing</li>
+                        <li>Critical Theory</li>
+                        <li>Research Methods</li>
+                    </ul>
+                    <div class="program-duration">
+                        <i class="fas fa-clock"></i> 4 years
+                    </div>
+                </div>
+                <div class="program-card" data-category="undergraduate online">
+                    <h3>Psychology</h3>
+                    <p class="program-type">Bachelor of Arts</p>
+                    <p>Understand human behavior and mental processes through scientific research and practical application.</p>
+                    <ul class="program-highlights">
+                        <li>Cognitive Psychology</li>
+                        <li>Social Psychology</li>
+                        <li>Research Methods</li>
+                        <li>Counseling Basics</li>
+                    </ul>
+                    <div class="program-duration">
+                        <i class="fas fa-clock"></i> 4 years
+                    </div>
+                </div>
+                <div class="program-card" data-category="graduate">
+                    <h3>Clinical Psychology</h3>
+                    <p class="program-type">Master of Arts</p>
+                    <p>Advanced training in psychological assessment, therapy, and clinical practice.</p>
+                    <ul class="program-highlights">
+                        <li>Clinical Assessment</li>
+                        <li>Therapy Techniques</li>
+                        <li>Ethics</li>
+                        <li>Practicum</li>
+                    </ul>
+                    <div class="program-duration">
+                        <i class="fas fa-clock"></i> 2 years
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sciences Department -->
+    <section class="department" id="sciences">
+        <div class="container">
+            <div class="department-header">
+                <h2><i class="fas fa-atom"></i> School of Sciences</h2>
+                <p>Advancing scientific knowledge and discovery</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card" data-category="undergraduate">
+                    <h3>Biology</h3>
+                    <p class="program-type">Bachelor of Science</p>
+                    <p>Study living organisms and their interactions with the environment in our modern laboratories.</p>
+                    <ul class="program-highlights">
+                        <li>Molecular Biology</li>
+                        <li>Ecology</li>
+                        <li>Genetics</li>
+                        <li>Laboratory Research</li>
+                    </ul>
+                    <div class="program-duration">
+                        <i class="fas fa-clock"></i> 4 years
+                    </div>
+                </div>
+                <div class="program-card" data-category="undergraduate">
+                    <h3>Chemistry</h3>
+                    <p class="program-type">Bachelor of Science</p>
+                    <p>Explore the composition, structure, and properties of matter through hands-on experiments.</p>
+                    <ul class="program-highlights">
+                        <li>Organic Chemistry</li>
+                        <li>Analytical Chemistry</li>
+                        <li>Physical Chemistry</li>
+                        <li>Research Projects</li>
+                    </ul>
+                    <div class="program-duration">
+                        <i class="fas fa-clock"></i> 4 years
+                    </div>
+                </div>
+                <div class="program-card" data-category="graduate">
+                    <h3>Environmental Science</h3>
+                    <p class="program-type">Master of Science</p>
+                    <p>Address environmental challenges through interdisciplinary scientific approaches.</p>
+                    <ul class="program-highlights">
+                        <li>Environmental Policy</li>
+                        <li>Conservation Biology</li>
+                        <li>Climate Science</li>
+                        <li>Sustainability</li>
+                    </ul>
+                    <div class="program-duration">
+                        <i class="fas fa-clock"></i> 2 years
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Oakwood University</h3>
+                    <p>Leading the way in higher education since 1970</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="academics.html">Academics</a></li>
+                        <li><a href="admissions.html">Admissions</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Programs</h4>
+                    <ul>
+                        <li><a href="academics.html#engineering">Engineering</a></li>
+                        <li><a href="academics.html#business">Business</a></li>
+                        <li><a href="academics.html#arts">Liberal Arts</a></li>
+                        <li><a href="academics.html#sciences">Sciences</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> 123 University Ave, Education City</p>
+                    <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@oakwood.edu</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Oakwood University. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
